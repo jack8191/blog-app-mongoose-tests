@@ -43,7 +43,7 @@ describe('Blog API resource', function(){
         return seedBlogPostData()
     })
     afterEach(function() {
-        return tearDownDb
+        return tearDownDb()
     })
     after(function(){
         return closeServer()
@@ -57,7 +57,7 @@ describe('Blog API resource', function(){
             .then(function(_res) {
                 res = _res;
                 expect(res).to.have.status(200);
-                expect(res.body.posts).to.have.lengthOf.at.least(1);
+                expect(res.body).to.have.lengthOf.at.least(1);
                 return BlogPost.count();
                 })
         })
